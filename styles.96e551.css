@@ -705,3 +705,42 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 @media(hover:hover){.bottle-copy-note:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:0 8px 18px #4c5b3122}}
 .bottle-copy-note[aria-pressed=true]{border:2px solid var(--green);background:#f1f1d8;padding:14px 17px}
 .bottle-copy-note:focus-visible{outline:3px solid var(--mango);outline-offset:2px}
+
+/* Sobre Kéfija: sección fija */
+.project-section{padding-block:70px 60px}
+.about{display:grid;gap:40px}
+.about-story{max-width:760px}
+.about-story .eyebrow{margin:0 0 14px}
+.about-story h2{font-size:clamp(2.2rem,4.4vw,3.4rem);margin:0 0 20px}
+.about-story h2 em{color:var(--green)}
+.about-story p:last-child{font-size:1.125rem;line-height:1.85;color:#795b3e;margin:0}
+.about-facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--line)}
+.about-facts li{padding:22px 24px;display:flex;flex-direction:column;gap:4px}
+.about-facts li+li{border-left:1px solid var(--line)}
+.about-facts strong{font-family:var(--display);font-size:1.6rem;letter-spacing:-.04em;line-height:1.2}
+.about-facts span{font-size:.875rem;color:#795b3e}
+.about-purpose{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.purpose-card{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:30px 32px 34px}
+.purpose-card .eyebrow{font-size:.875rem;color:var(--green)}
+.purpose-card h3{font-size:1.9rem;margin:10px 0 14px}
+.purpose-card p{font-size:1rem;line-height:1.85;color:#795b3e;margin:0}
+@media(max-width:780px){.project-section{padding-block:48px 40px}.about-facts{grid-template-columns:1fr}.about-facts li+li{border-left:0;border-top:1px solid var(--line)}.about-purpose{grid-template-columns:1fr}.purpose-card{padding:24px 22px 28px}}
+
+/* FAQ refinements */
+.faq-layout{align-items:start}
+.faq-layout>div:first-child{position:sticky;top:140px}
+.faq-aside{margin:28px 0 8px;font-size:1rem;color:#6b4a33}
+.faq-contact{font-size:1rem;gap:12px}
+.faq-contact .icon{width:14px;height:14px;transform:rotate(45deg)}
+.faq-list details{border-bottom-color:#c9b99e}
+.faq-list details:first-child{border-top-color:#c9b99e}
+.faq-list summary{font-size:1.1rem;line-height:1.5;padding-block:20px;transition:color .2s}
+.faq-list summary:hover{color:#b37319}
+.faq-plus:after{transition:transform .25s}
+.faq-list details>p{font-size:1rem;line-height:1.65;color:#5f4430;text-wrap:pretty;padding-bottom:22px;margin:0}
+.faq-list .inline-button{display:inline;min-height:0;margin:0;line-height:inherit;font-size:inherit;vertical-align:baseline}
+.faq-list .inline-button:after{content:' →';text-decoration:none;display:inline-block}
+.faq-list details[open]>p{animation:faqin .25s ease}
+@keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.faq-list details[open]>p{animation:none}}
+@media(max-width:900px){.faq-layout>div:first-child{position:static}.faq-list summary{font-size:1.05rem}}
