@@ -879,7 +879,7 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 .contact-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .contact-actions .contact-email{flex:1;min-width:0}
 .contact-actions .contact-copy{margin:0 -10px 0 0;flex-shrink:0}
-@media(max-width:680px){.contact-grid{grid-template-columns:1fr}.contact-actions{flex-wrap:wrap;gap:0}.contact-actions .contact-copy{margin:0 0 0 -10px}}
+@media(max-width:680px){.contact-grid{grid-template-columns:1fr}.contact-actions{flex-wrap:wrap;gap:4px 0}.contact-actions .contact-email{flex:1 1 100%}.contact-actions .contact-copy{margin:0 0 0 -10px}}
 /* contacto v4: misma tarjeta para todos */
 .contact-person.has-role{border-color:#dac6a1}
 .contact-person .contact-role{color:#5b4026}
