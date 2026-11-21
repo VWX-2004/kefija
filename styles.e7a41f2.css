@@ -620,10 +620,11 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 .mascot-blob{background:#ffe4a4}
 /* 2. mascota con vida: flotación, saludo con la mano y estrellas */
 @keyframes mascot-float{0%,100%{translate:0 0}50%{translate:0 -10px}}
-@keyframes mascot-wave{0%,55%,100%{transform:translateX(-50%) rotate(-5deg)}62%{transform:translateX(-50%) rotate(7deg)}70%{transform:translateX(-50%) rotate(-12deg)}78%{transform:translateX(-50%) rotate(7deg)}86%{transform:translateX(-50%) rotate(-10deg)}93%{transform:translateX(-50%) rotate(-5deg)}}
+@keyframes mascot-wave{0%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(0deg) translate(4.8%,1%)}55%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(0deg) translate(4.8%,1%)}62%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(9deg) translate(4.8%,1%)}70%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(-9deg) translate(4.8%,1%)}78%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(9deg) translate(4.8%,1%)}86%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(-7deg) translate(4.8%,1%)}93%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(0deg) translate(4.8%,1%)}100%{transform:translateX(-50%) rotate(-5deg) translate(-4.8%,-1%) rotate(0deg) translate(4.8%,1%)}}
 @keyframes mascot-twinkle{0%,100%{opacity:1;scale:1}50%{opacity:.45;scale:.8}}
 .mascot-stage img{transform-origin:77% 53%;animation:mascot-float 5.5s ease-in-out infinite!important}
-.mascot-stage .mascot-hand{clip-path:polygon(66% 24%,98% 24%,98% 56%,70% 56%);animation:mascot-float 5.5s ease-in-out infinite,mascot-wave 4.5s ease-in-out 1s infinite!important;pointer-events:none}
+.mascot-stage img:not(.mascot-hand){clip-path:polygon(0 0,100% 0,100% 26.4%,70.3% 26.4%,70.3% 38.7%,73.4% 44.5%,73.1% 47.5%,72.3% 50.4%,72.3% 55.3%,100% 55.3%,100% 100%,0 100%)}
+.mascot-stage .mascot-hand{clip-path:polygon(70.3% 26.4%,100% 26.4%,100% 55.3%,72% 55.3%,72% 50.4%,73.1% 47.5%,73.4% 44.5%,70.3% 38.7%);animation:mascot-float 5.5s ease-in-out infinite,mascot-wave 4.5s ease-in-out 1s infinite!important;pointer-events:none}
 .mascot-star{animation:mascot-twinkle 3s ease-in-out infinite!important}
 .star-two{animation-delay:1.2s!important}
 /* 3. texto más fácil de leer */
