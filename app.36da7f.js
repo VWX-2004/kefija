@@ -169,7 +169,8 @@ const zoomLevel = document.querySelector('#zoom-level');
 const documentBack = document.querySelector('#document-back');
 const documentDownload = document.querySelector('#document-download');
 const tabs = document.querySelectorAll('[data-document-tab]');
-const MIN_SCALE = 1, MAX_SCALE = 3, STEP = 0.25;
+const MIN_SCALE = 1, HARD_MAX = 3, STEP = 0.25;
+let MAX_SCALE = HARD_MAX;
 let activeDocument = 'frente', activePage = 1, labelScale = 1, cameFrom = null;
 
 function fitDocumentImage() {
@@ -180,6 +181,10 @@ function fitDocumentImage() {
   const byWidth = Math.min(availableWidth, 760, documentImage.naturalWidth);
   const byPage = Math.min(availableWidth / documentImage.naturalWidth, availableHeight / documentImage.naturalHeight, 1) * documentImage.naturalWidth;
   const base = materials[activeDocument].fit === 'width' ? byWidth : byPage;
+  MAX_SCALE = Math.max(1, Math.min(HARD_MAX, Math.floor(documentImage.naturalWidth / base / STEP) * STEP));
+  if (labelScale > MAX_SCALE) labelScale = MAX_SCALE;
+  zoomIn.disabled = labelScale >= MAX_SCALE;
+  zoomLevel.textContent = `${Math.round(labelScale * 100)} %`;
   documentImage.style.width = `${Math.floor(base * labelScale)}px`;
   documentImage.style.height = 'auto';
 }
