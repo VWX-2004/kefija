@@ -724,7 +724,7 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 .purpose-card .eyebrow{font-size:.875rem;color:var(--green)}
 .purpose-card h3{font-size:1.9rem;margin:10px 0 14px}
 .purpose-card p{font-size:1rem;line-height:1.85;color:#795b3e;margin:0}
-@media(max-width:780px){.project-section{padding-block:48px 40px}.about-facts{grid-template-columns:1fr}.about-facts li+li{border-left:0;border-top:1px solid var(--line)}.about-purpose{grid-template-columns:1fr}.purpose-card{padding:24px 22px 28px}}
+@media(max-width:780px){.project-section{padding-block:48px 40px}.about-facts{grid-template-columns:1fr}.about-facts li{padding:18px 0}.about-facts li+li{border-left:0;border-top:1px solid var(--line)}.about-purpose{grid-template-columns:1fr}.purpose-card{padding:24px 22px 28px}}
 
 /* FAQ refinements */
 .faq-layout{align-items:start}
