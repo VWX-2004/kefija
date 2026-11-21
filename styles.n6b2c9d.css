@@ -614,3 +614,40 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 @keyframes star-spin{to{rotate:360deg}}
 .ribbon-track span:nth-child(even){animation:star-spin 8s linear infinite!important}
 @media(max-width:680px){.hero .product-price,.trust-badges{justify-content:center}.hero .product-price strong{font-size:2.3rem}}
+
+/* ===== Sección "¿Qué es el kéfir?" ===== */
+/* 1. "Conoce Kéfija." ya no se corta arriba */
+.mascot-stage{overflow:visible}
+.mascot-hello{top:14px;line-height:1.35;padding-top:4px}
+@media(max-width:680px){.mascot-hello{top:10px}}
+/* 6. fondo cálido como el hero */
+.mascot-blob{background:#ffe4a4}
+/* 2. mascota con vida: flotación, saludo con la mano y estrellas */
+@keyframes mascot-float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes mascot-wave{0%,55%,100%{transform:translateX(-50%) rotate(-5deg)}62%{transform:translateX(-50%) rotate(7deg)}70%{transform:translateX(-50%) rotate(-12deg)}78%{transform:translateX(-50%) rotate(7deg)}86%{transform:translateX(-50%) rotate(-10deg)}93%{transform:translateX(-50%) rotate(-5deg)}}
+@keyframes mascot-twinkle{0%,100%{opacity:1;scale:1}50%{opacity:.45;scale:.8}}
+.mascot-stage img{transform-origin:77% 53%;animation:mascot-float 5.5s ease-in-out infinite!important}
+.mascot-stage .mascot-hand{clip-path:polygon(66% 24%,98% 24%,98% 56%,70% 56%);animation:mascot-float 5.5s ease-in-out infinite,mascot-wave 4.5s ease-in-out 1s infinite!important;pointer-events:none}
+.mascot-star{animation:mascot-twinkle 3s ease-in-out infinite!important}
+.star-two{animation-delay:1.2s!important}
+/* 3. texto más fácil de leer */
+.discovery-copy>p.discovery-lead{font-size:1.125rem;line-height:1.75;color:#5f4632;max-width:470px;margin-top:24px}
+.discovery-points{list-style:none;display:grid;gap:12px;margin:26px 0 0;padding:0}
+.discovery-points li{display:flex;align-items:center;gap:14px;font-size:1.0625rem;font-weight:600;color:var(--brown)}
+.discovery-points .icon{box-sizing:content-box;width:20px;height:20px;padding:8px;border-radius:50%;background:#ffe4a4;color:#b9740a;flex-shrink:0}
+/* 4. avisos como sellos */
+.discovery-facts{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 28px}
+.discovery-facts span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid #e5c783;background:#fff3d6;border-radius:100px;font-size:.875rem;font-weight:600;color:var(--brown)}
+.discovery-facts .icon{width:18px;height:18px;color:var(--mango);flex-shrink:0}
+/* 5. más contraste */
+.orange-text{color:#c66f00}
+/* 8. enlace como botón con flecha */
+.discovery-copy .text-link.discovery-link{font-size:.9375rem;gap:12px;padding:10px 20px;min-height:48px;border:1.5px solid var(--brown);border-radius:100px;font-weight:700;transition:background .25s,color .25s!important}
+.discovery-link .icon{width:18px;height:18px;transition:transform .25s!important}
+.discovery-link:hover,.discovery-link:focus-visible{background:var(--brown);color:var(--cream)}
+.discovery-link:hover .icon,.discovery-link:focus-visible .icon{transform:translateX(6px)}
+/* 7. entrada con fundido al hacer scroll */
+.js-reveal [data-reveal]{opacity:0;translate:0 26px;transition:opacity .9s cubic-bezier(.2,.7,.2,1),translate .9s cubic-bezier(.2,.7,.2,1)!important}
+.js-reveal [data-reveal].is-in{opacity:1;translate:0 0}
+.js-reveal .discovery-copy[data-reveal]{transition-delay:.15s!important}
+@media(max-width:680px){.discovery-points li{font-size:1rem}.discovery-copy>p.discovery-lead{font-size:1.0625rem}}
