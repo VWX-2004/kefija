@@ -900,3 +900,4 @@ html{scroll-padding-top:88px}
 .header-social:focus-visible,.desktop-nav a:focus-visible{outline:3px solid var(--brown);outline-offset:2px}
 @media(max-width:680px){.header-social{display:none}}
 @media(max-width:900px){.desktop-nav a{padding:9px 11px;font-size:.875rem}}
+.ribbon-group{display:flex;align-items:center;min-width:100vw;justify-content:space-around}
