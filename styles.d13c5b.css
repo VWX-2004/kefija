@@ -883,3 +883,20 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 /* contacto v4: misma tarjeta para todos */
 .contact-person.has-role{border-color:#dac6a1}
 .contact-person .contact-role{color:#5b4026}
+/* header v2 */
+html{scroll-padding-top:88px}
+.site-header{position:sticky;top:0;background:#fff8ecdb;-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid #522b1920}
+@media(min-width:681px){
+.header-inner{display:grid;grid-template-columns:1fr auto 1fr;height:84px;min-height:0}
+.desktop-nav{margin:0;gap:6px;justify-self:center}
+.desktop-nav a{font-size:.9375rem;font-weight:500;padding:9px 16px;border-radius:999px;transition:background .2s,color .2s}
+.desktop-nav a:after{display:none}
+.desktop-nav a:hover{background:#522b1912}
+.header-actions{justify-self:end;gap:14px}
+}
+.header-social{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1.5px solid #522b1938;color:var(--brown);transition:background .2s,color .2s,border-color .2s}
+.header-social .icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
+.header-social:hover{background:var(--brown);color:var(--cream);border-color:var(--brown)}
+.header-social:focus-visible,.desktop-nav a:focus-visible{outline:3px solid var(--brown);outline-offset:2px}
+@media(max-width:680px){.header-social{display:none}}
+@media(max-width:900px){.desktop-nav a{padding:9px 11px;font-size:.875rem}}
