@@ -744,3 +744,22 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 @keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.faq-list details[open]>p{animation:none}}
 @media(max-width:900px){.faq-layout>div:first-child{position:static}.faq-list summary{font-size:1.05rem}}
+
+/* FAQ refinements */
+.faq-layout{align-items:start}
+.faq-layout>div:first-child{position:sticky;top:140px}
+.faq-layout>div:first-child>p.faq-aside{margin:28px 0 8px;font-size:1rem;line-height:1.6;color:#6b4a33}
+.faq-contact{font-size:1rem;gap:12px}
+.faq-contact .icon{width:14px;height:14px;transform:rotate(45deg)}
+.faq-list details{border-bottom-color:#c9b99e}
+.faq-list details:first-child{border-top-color:#c9b99e}
+.faq-list summary{font-size:1.1rem;line-height:1.5;padding-block:20px;transition:color .2s}
+.faq-list summary:hover{color:#b37319}
+.faq-plus:after{transition:transform .25s}
+.faq-list details>p{font-size:1rem;line-height:1.65;color:#5f4430;text-wrap:pretty;padding-bottom:22px;margin:0}
+.faq-list .inline-button{display:inline;min-height:0;margin:0;line-height:inherit;font-size:inherit;vertical-align:baseline}
+.faq-list .inline-button:after{content:' →';text-decoration:none;display:inline-block}
+.faq-list details[open]>p{animation:faqin .25s ease}
+@keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.faq-list details[open]>p{animation:none}}
+@media(max-width:900px){.faq-layout>div:first-child{position:static}.faq-list summary{font-size:1.05rem}}
