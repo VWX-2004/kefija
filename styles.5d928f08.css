@@ -571,3 +571,6 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 @media(min-width:681px){html{scroll-padding-top:115px}.site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cream) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}.desktop-nav{font-size:15px;gap:46px;letter-spacing:.02em}.desktop-nav a:after{bottom:6px}}
 @media(min-width:681px) and (max-width:1150px){.desktop-nav{font-size:14px;gap:30px}}
 @media(min-width:681px) and (max-width:900px){.desktop-nav{font-size:13px;gap:20px}}
+
+/* Hero: solo botella y círculo amarillo */
+.hero-orbit:after{display:none}
