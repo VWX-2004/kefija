@@ -12,8 +12,8 @@ document.querySelectorAll('[data-bottle-viewer]').forEach(host=>{
   if(Math.abs(delta)<=arc/2+step/2){const label=document.createElement('span');label.className='bottle-label-strip';label.style.backgroundImage=`url("${source}")`;label.style.backgroundSize=`${textureWidth}px 284px`;label.style.backgroundPosition=`${-(delta+arc/2)*radius+radius*step/2}px 0`;strip.append(label);}
   spin.append(strip);
  }
- let angle=0,drag=null;
- function update(value){angle=value;spin.style.transform=`rotateY(${angle}rad)`;const cos=Math.cos(angle),rear=cos<0;status.textContent=Math.abs(cos)<.22?'Vista lateral':rear?'Vista posterior':'Vista frontal';slider.value=String(Math.round(((angle%TAU)+TAU)%TAU/TAU*360));slider.setAttribute('aria-valuetext',`${slider.value} grados, ${status.textContent.toLowerCase()}`);front.setAttribute('aria-pressed',String(cos>.95));back.setAttribute('aria-pressed',String(cos<-.95));read.setAttribute('aria-label',rear?'Ampliar etiqueta posterior':'Ampliar etiqueta frontal');read.title=read.getAttribute('aria-label');}
+ let angle=0,drag=null;const stage=host.querySelector('.bottle-stage');const touched=()=>stage.classList.add('is-touched');['pointerdown','input','keydown'].forEach(n=>host.addEventListener(n,touched,{once:true}));front.addEventListener('click',touched);back.addEventListener('click',touched);
+ function update(value){angle=value;spin.style.transform=`rotateY(${angle}rad)`;const cos=Math.cos(angle),rear=cos<0;status.textContent=Math.abs(cos)<.22?'Vista lateral':rear?'Vista posterior':'Vista frontal';slider.value=String(Math.round(((angle%TAU)+TAU)%TAU/TAU*360));slider.setAttribute('aria-valuetext',`${slider.value} grados, ${status.textContent.toLowerCase()}`);front.setAttribute('aria-pressed',String(cos>.95));back.setAttribute('aria-pressed',String(cos<-.95));document.querySelectorAll('[data-face-card]').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.faceCard==='front'?cos>=0:cos<0)));read.setAttribute('aria-label',rear?'Ampliar etiqueta posterior':'Ampliar etiqueta frontal');read.title=read.getAttribute('aria-label');}
  function turnTo(target){spin.style.transition=matchMedia('(prefers-reduced-motion: reduce)').matches?'none':'transform 350ms ease';const delta=((target-angle+Math.PI)%TAU+TAU)%TAU-Math.PI;update(angle+delta);}
  front.addEventListener('click',()=>turnTo(0));back.addEventListener('click',()=>turnTo(Math.PI));read.addEventListener('click',()=>window.openKefijaMaterial(Math.cos(angle)<0?'reverso':'frente'));
  slider.addEventListener('input',()=>{spin.style.transition='none';update(Number(slider.value)/360*TAU);});
@@ -21,6 +21,8 @@ document.querySelectorAll('[data-bottle-viewer]').forEach(host=>{
  object.addEventListener('pointermove',e=>{if(drag&&drag.id===e.pointerId)update(drag.angle+(e.clientX-drag.x)*.015);});
  for(const name of ['pointerup','pointercancel'])object.addEventListener(name,()=>{drag=null;object.classList.remove('dragging');});
  object.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();spin.style.transition='none';if(e.key==='Home')turnTo(0);else if(e.key==='End')turnTo(Math.PI);else update(angle+(e.key==='ArrowRight'?1:-1)*Math.PI/12);}});
+ host.addEventListener('pointerdown',()=>{},{passive:true});
+ document.querySelectorAll('[data-face-card]').forEach(c=>c.addEventListener('click',()=>(c.dataset.faceCard==='front'?front:back).click()));
  update(0);
 });
 })();

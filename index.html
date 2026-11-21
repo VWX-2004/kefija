@@ -26,10 +26,10 @@
   <link rel="preload" href="assets/kefija-botella-640.webp" as="image" type="image/webp" imagesrcset="assets/kefija-botella-640.webp 640w, assets/kefija-botella.webp 1254w" imagesizes="(max-width:680px) 100vw, 640px" fetchpriority="high">
   <link rel="preload" href="assets/kefija-sans.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preload" href="assets/kefija-sans-semibold.woff2" as="font" type="font/woff2" crossorigin="">
-  <link rel="stylesheet" href="styles.n6b2c9d.css">
+  <link rel="stylesheet" href="styles.db5743.css">
   <script>document.documentElement.classList.add("js-reveal")</script>
   <script src="app.73fde133.js" defer=""></script>
-  <script src="bottle-viewer.f4ad5457.js" defer=""></script>
+  <script src="bottle-viewer.2dc7658b.js" defer=""></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Ir al contenido</a>
@@ -46,6 +46,7 @@
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5"></path></symbol>
     <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11Z"></path></symbol>
     <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3Z"></path><path d="M12 10v4.5M12 17.5v.1" stroke-linecap="round"></path></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></symbol>
   </svg>
 
@@ -119,17 +120,17 @@
 
     <section class="product-section" id="sabor" aria-labelledby="product-title">
       <div class="section-wrap">
-        <div class="product-heading"><p class="eyebrow">Información del producto</p><h2 id="product-title">Cremoso. Frutal.<br><em>Con un toque ácido.</em></h2><p>El mango aporta el sabor frutal, la miel añade dulzor y el kéfir contribuye con su acidez característica.</p></div>
+        <div class="product-heading"><p class="eyebrow">Información del producto</p><h2 id="product-title">Cremoso. Frutal.<br><em class="sun-word">Con un toque ácido.<svg viewBox="0 0 300 22" preserveAspectRatio="none" fill="none" aria-hidden="true"><path pathLength="1" d="M4 13C70 3 190 3 296 10"></path></svg></em></h2><p>El mango aporta el sabor frutal, la miel añade dulzor y el kéfir contribuye con su acidez característica.</p></div>
         <dl class="product-facts">
-          <div><dt>Ingredientes</dt><dd>Leche entera pasteurizada y cultivos de kéfir, pulpa de mango y miel de abeja.</dd></div>
-          <div><dt>Alérgenos</dt><dd><strong>Contiene leche.</strong> No es libre de lactosa.</dd></div>
-          <div><dt>Conservación</dt><dd>Mantener refrigerado a 4 °C o menos. Agitar suavemente antes de abrir.</dd></div>
-          <div><dt>Duración y vencimiento</dt><dd>Consultar la fecha indicada en el envase.</dd></div>
+          <div class="fact-card" data-reveal style="--d:0.00s"><span class="fact-icon" aria-hidden="true"><svg class="icon"><use href="#i-leaf"></use></svg></span><div><dt>Ingredientes</dt><dd>Leche entera pasteurizada y cultivos de kéfir, pulpa de mango y miel de abeja.</dd></div></div>
+          <div class="fact-card" data-reveal style="--d:0.12s"><span class="fact-icon" aria-hidden="true"><svg class="icon"><use href="#i-warn"></use></svg></span><div><dt>Alérgenos</dt><dd><span class="allergen-tag"><strong>Contiene leche.</strong> No es libre de lactosa.</span></dd></div></div>
+          <div class="fact-card" data-reveal style="--d:0.24s"><span class="fact-icon" aria-hidden="true"><svg class="icon"><use href="#i-snow"></use></svg></span><div><dt>Conservación</dt><dd>Mantener refrigerado a 4 °C o menos. Agitar suavemente antes de abrir.</dd></div></div>
+          <div class="fact-card" data-reveal style="--d:0.36s"><span class="fact-icon" aria-hidden="true"><svg class="icon"><use href="#i-clock"></use></svg></span><div><dt>Duración y vencimiento</dt><dd>Consultar la fecha indicada en el envase.</dd></div></div>
         </dl>
         <details class="section-disclosure bottle-disclosure" id="materiales" open>
           <summary><span><span class="eyebrow">Presentación de 330 ml</span><strong>Botella y etiquetas del producto</strong></span><span class="disclosure-plus" aria-hidden="true">+</span></summary>
           <div class="disclosure-body">
-      <div class="bottle-showcase" id="botella"><div data-bottle-viewer=""></div><div class="bottle-showcase-copy"><p class="material-meta">MANGO Y MIEL · 330 ML</p><h3>Presentación<br>del producto.</h3><p>Gira la botella con el cursor o con el dedo para ver ambos lados.</p><p>Selecciona la lupa para ampliar la etiqueta.</p><div class="bottle-copy-note"><strong>Frente</strong><p>Identificación del producto, sabor y contenido neto.</p></div><div class="bottle-copy-note"><strong>Reverso</strong><p>Ingredientes, conservación e información nutricional estimada.</p></div></div></div>
+      <div class="bottle-showcase" id="botella"><div data-bottle-viewer=""></div><div class="bottle-showcase-copy"><p class="material-meta">MANGO Y MIEL · 330 ML</p><h3>Presentación<br>del producto.</h3><p>Gira la botella con el cursor o con el dedo para ver ambos lados.</p><p>Selecciona la lupa para ampliar la etiqueta.</p><button type="button" class="bottle-copy-note" data-face-card="front" aria-pressed="true"><strong>Frente</strong><span>Identificación del producto, sabor y contenido neto.</span></button><button type="button" class="bottle-copy-note" data-face-card="back" aria-pressed="false"><strong>Reverso</strong><span>Ingredientes, conservación e información nutricional estimada.</span></button></div></div>
           </div>
         </details>
       </div>
@@ -232,7 +233,7 @@
 
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-title">
     <div class="dialog-layout">
-      <div class="dialog-product"><span class="dialog-product-label">MANGO + MIEL · 330 ML</span><img src="assets/kefija-botella-640.webp" alt="Botella de Kéfija de 330 ml" width="1254" height="1254"><button class="text-link label-magnifier" data-open-document="frente" aria-label="Ampliar etiqueta frontal" title="Ampliar etiqueta frontal"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg></button></div>
+      <div class="dialog-product"><span class="dialog-product-label">MANGO + MIEL · 330 ML</span><img src="assets/kefija-botella-640.webp" alt="Botella de Kéfija de 330 ml" width="1254" height="1254"><button class="text-link label-magnifier" data-open-document="frente" aria-label="Ampliar etiqueta frontal" title="Ampliar etiqueta frontal"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="magnifier-tip" aria-hidden="true">Ampliar etiqueta</span></button></div>
       <div class="dialog-content">
         <button class="close-button" data-close-order="" aria-label="Cerrar consulta">×</button>
         <p class="eyebrow">Solicitud de información</p><h2 id="order-title">Consulta sobre <em>Kéfija.</em></h2>
@@ -265,7 +266,7 @@ Muchas gracias.</p></details>
       </div>
     </div>
   </dialog>
-  <template id="bottle-template"><div class="bottle-interactive"><div class="bottle-stage"><span class="bottle-status" aria-live="polite">Vista frontal</span><div class="bottle-object" tabindex="0" role="group" aria-roledescription="botella giratoria" aria-label="Botella de Kéfija. Gira con el cursor, el dedo o las flechas del teclado."><div class="bottle-cap"></div><div class="bottle-neck"></div><div class="bottle-shoulder"></div><div class="bottle-shell"><div class="bottle-spin"></div><div class="bottle-gloss"></div></div><div class="bottle-base"></div></div><span class="bottle-drag-hint">Arrastra para girar</span></div><div class="bottle-controls"><div class="bottle-face-buttons"><button data-bottle-front="" aria-pressed="true">Frente</button><button data-bottle-back="" aria-pressed="false">Reverso</button></div><button class="label-magnifier" data-bottle-read="" aria-label="Ampliar etiqueta frontal" title="Ampliar etiqueta frontal"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg></button></div><label class="bottle-range-label">Giro de la botella<input type="range" min="0" max="360" step="1" value="0" aria-label="Giro de la botella"></label></div></template>
+  <template id="bottle-template"><div class="bottle-interactive"><div class="bottle-stage"><span class="bottle-status" aria-live="polite">Vista frontal</span><div class="bottle-object" tabindex="0" role="group" aria-roledescription="botella giratoria" aria-label="Botella de Kéfija. Gira con el cursor, el dedo o las flechas del teclado."><div class="bottle-cap"></div><div class="bottle-neck"></div><div class="bottle-shoulder"></div><div class="bottle-shell"><div class="bottle-spin"></div><div class="bottle-gloss"></div></div><div class="bottle-base"></div></div><span class="bottle-drag-hint"><span class="hint-arrow" aria-hidden="true">←</span> Arrastra para girar <span class="hint-arrow" aria-hidden="true">→</span></span></div><div class="bottle-controls"><div class="bottle-face-buttons"><button data-bottle-front="" aria-pressed="true">Frente</button><button data-bottle-back="" aria-pressed="false">Reverso</button></div><button class="label-magnifier" data-bottle-read="" aria-label="Ampliar etiqueta frontal" title="Ampliar etiqueta frontal"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="magnifier-tip" aria-hidden="true">Ampliar etiqueta</span></button></div><label class="bottle-range-label"><span class="range-title">Giro de la botella</span><span class="range-row"><span aria-hidden="true">Frente</span><input type="range" min="0" max="360" step="1" value="0" aria-label="Giro de la botella"><span aria-hidden="true">Reverso</span></span></label></div></template>
   <dialog class="bottle-dialog" id="label-dialog" aria-labelledby="label-title"><div class="bottle-dialog-header"><div><p class="material-meta">PRESENTACIÓN DEL PRODUCTO</p><h2 id="label-title">Vista frontal y posterior.</h2></div><button class="document-close" data-close-label="" aria-label="Cerrar botella">×</button></div><div data-bottle-viewer=""></div></dialog>
 
   <dialog class="document-dialog" id="document-dialog" aria-labelledby="document-title">
