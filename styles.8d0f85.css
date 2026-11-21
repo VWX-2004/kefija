@@ -763,3 +763,40 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 @keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.faq-list details[open]>p{animation:none}}
 @media(max-width:900px){.faq-layout>div:first-child{position:static}.faq-list summary{font-size:1.05rem}}
+
+/* contacto v2 */
+.contact-heading-side{display:flex;flex-direction:column;align-items:flex-start;gap:16px;max-width:360px}
+.contact-heading-side>p{margin:0;font-size:1rem;line-height:1.8;color:#5f4529}
+.contact-heading-side .button{min-height:46px}
+.contact-person{position:relative;padding:24px 24px 18px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,box-shadow .2s}
+.contact-person-top{display:flex;align-items:center;gap:14px;margin:0}
+.contact-person .contact-initials,.contact-instagram-band .contact-initials{background:var(--green);color:var(--cream);width:42px;height:42px;font-size:.875rem}
+.contact-person:nth-child(2) .contact-initials{background:var(--green);color:var(--cream)}
+.contact-id{min-width:0}
+.contact-id h3{margin:0;font-size:1.35rem;line-height:1.25}
+.contact-role{display:block;margin-top:2px;font-size:.8125rem;font-weight:600;letter-spacing:.02em;color:#6b4a14}
+.contact-person.has-role{border-color:#c9a45a}
+.contact-person .contact-email{margin:0;font-size:.9375rem;line-height:1.5;color:#4a3320;text-decoration:none;gap:10px;align-items:flex-start;min-height:0}
+.contact-person .contact-email span{text-decoration:none;overflow-wrap:anywhere}
+.contact-person .contact-email .icon-mail{width:18px;height:18px;flex-shrink:0;margin:3px 0 0;fill:none;stroke:currentColor;stroke-width:1.6}
+.contact-person .contact-email::after{content:"";position:absolute;inset:0;border-radius:14px}
+.contact-person .contact-email:focus-visible::after{outline:3px solid var(--brown);outline-offset:2px}
+.contact-copy{position:relative;z-index:1;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 10px;margin:0 0 0 -10px;background:transparent;border:0;border-radius:8px;font:inherit;font-size:.8125rem;font-weight:600;color:#5b4026;cursor:pointer}
+.contact-copy .icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
+.contact-copy:hover,.contact-copy.is-copied{color:var(--green);background:#4c5b3116}
+.contact-copy:focus-visible{outline:3px solid var(--brown);outline-offset:1px}
+@media(hover:hover){.contact-person:hover{border-color:#b98f43;box-shadow:0 8px 24px #52301920}}
+.contact-instagram-band{display:flex;align-items:center;gap:18px;margin-top:24px;padding:20px 26px;background:var(--green);color:var(--cream);border-radius:14px;text-decoration:none;transition:background .2s}
+.contact-instagram-band .contact-initials{background:var(--cream);color:var(--green);flex-shrink:0}
+.contact-instagram-band .band-text{display:flex;flex-direction:column;gap:2px}
+.contact-instagram-band .eyebrow{color:#f6ecd5;font-size:.8125rem;letter-spacing:.1em}
+.contact-instagram-band strong{font-family:var(--display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.contact-instagram-band .band-note{margin-left:auto;font-size:.9375rem;color:#f6ecd5;text-decoration:underline;text-underline-offset:4px}
+.contact-instagram-band .band-arrow{width:20px;height:20px;flex-shrink:0}
+.contact-instagram-band:hover{background:#3f4c27}
+.contact-instagram-band:focus-visible{outline:3px solid var(--brown);outline-offset:3px}
+.contact-section .eyebrow{color:#5b4026}
+@media(max-width:900px){.contact-heading-side{max-width:300px}}
+@media(max-width:680px){.contact-heading-side{max-width:none;margin-top:20px}.contact-instagram-band{flex-wrap:wrap;padding:18px 20px}.contact-instagram-band .band-note{margin-left:60px;width:calc(100% - 60px);order:3}.contact-instagram-band .band-arrow{margin-left:auto}}
+.contact-section .contact-instagram-band .eyebrow{color:#f6ecd5}
+.contact-person-top{min-height:60px}
