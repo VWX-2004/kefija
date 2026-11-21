@@ -30,7 +30,7 @@ function normalizeQuantity(value) {
 }
 function getMessage() {
   const count = normalizeQuantity(quantityInput.value);
-  return `Hola, equipo Kéfija:\n\nMe gustaría consultar la disponibilidad de ${count} ${count === 1 ? 'botella' : 'botellas'} de kéfir de mango y miel de abeja, en presentación de 330 ml, con un precio unitario de L 69.99. ¿Podrían indicarme las opciones de entrega?\n\nMuchas gracias.`;
+  return `Hola, equipo Kéfija:\n\nMe gustaría consultar la disponibilidad de ${count} ${count === 1 ? 'botella' : 'botellas'} de kéfir de mango y miel de abeja (330 ml, L 69.99). ¿Podrían indicarme las opciones de entrega?\n\nMuchas gracias.`;
 }
 function updateInquiry() {
   const count = normalizeQuantity(quantityInput.value);
