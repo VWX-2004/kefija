@@ -834,3 +834,39 @@ button,.button,summary,input[type=range]{touch-action:manipulation}
 .footer-wordmark{justify-content:center;gap:.08em;padding-right:0}
 .footer-wordmark span{margin-left:0}
 @media(max-width:680px){.cta-doodle{top:26px;left:6px}.cta-doodle.cta-doodle-small{top:auto;left:auto;right:8px;bottom:30px}}
+
+/* === Mejoras de tarjetas: visor de etiquetas y consulta === */
+.dialog-label-links{position:absolute;bottom:20px;left:16px;right:16px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;z-index:2}
+.label-pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 16px;border:1px solid var(--brown);border-radius:40px;background:var(--cream);color:var(--brown);font:inherit;font-size:.875rem;font-weight:600;cursor:pointer}
+.label-pill .icon{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+@media(hover:hover){.label-pill:hover{background:var(--brown);color:var(--cream)}}
+.order-total{font-size:.9375rem;margin-top:12px;color:#795b3e}
+.order-total strong{color:var(--brown);font-size:1.05rem}
+.order-recipient-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-block:8px 18px;flex-wrap:wrap}
+.order-recipient-row .order-recipient{margin:0}
+.order-copy-email{font:inherit;font-size:.875rem;font-weight:600;color:var(--brown);background:transparent;border:1px solid #bca583;border-radius:30px;padding:6px 14px;min-height:36px;cursor:pointer}
+@media(hover:hover){.order-copy-email:hover{background:#f4e2b9}}
+.order-copy-button{display:flex;align-items:center;justify-content:center;width:100%;text-decoration:none;font-weight:600;border:1px solid var(--brown);border-radius:100px;min-height:48px;margin-top:12px;padding:10px 16px}
+@media(hover:hover){.order-copy-button:hover{background:#f4e2b9}}
+.copy-feedback{font-weight:600}
+.order-email-help{font-size:.8125rem}
+.quantity-control button:disabled{opacity:.45}
+.document-heading{display:flex;flex-direction:column;align-items:flex-start}
+.document-back{font:inherit;font-size:.875rem;font-weight:600;color:var(--brown);background:transparent;border:0;padding:0 0 8px;min-height:32px;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.document-back[hidden]{display:none}
+.document-toolbar{justify-content:space-between;align-items:center;flex-wrap:wrap}
+.document-tabs{display:inline-flex;gap:3px;padding:4px;border:1px solid #cbb896;border-radius:40px;background:#fffdf7}
+.document-tabs button{font:inherit;font-size:.9375rem;border:0;background:transparent;color:var(--brown);border-radius:30px;padding:9px 22px;min-height:44px;cursor:pointer}
+.document-tabs button[aria-pressed=true]{background:var(--brown);color:var(--cream)}
+.document-download{display:inline-flex;align-items:center;min-height:44px;font-size:.875rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.zoom-controls{margin-left:auto;display:inline-flex;align-items:center;gap:6px}
+.zoom-controls button{font:inherit;font-size:1rem;min-width:44px;min-height:44px;border:1px solid #bea887;border-radius:10px;background:#fff9ec;color:var(--brown);cursor:pointer}
+.zoom-controls #document-zoom{font-size:.875rem;padding:0 14px;margin-left:0}
+.zoom-controls button:disabled{opacity:.4;cursor:default}
+@media(hover:hover){.zoom-controls button:hover:not(:disabled){background:#f1dbad}}
+.zoom-controls output{min-width:56px;text-align:center;font-size:.875rem;font-variant-numeric:tabular-nums}
+.document-pagination{justify-content:flex-end}
+.document-canvas{background:#d9c7a2;padding:28px}
+.document-canvas>img{border-radius:4px;box-shadow:0 8px 28px #3d24112e,0 1px 3px #3d241122;display:block;margin:0 auto;cursor:zoom-in}
+.document-canvas.zoomed>img{width:auto;margin:0 auto;cursor:zoom-out}
+@media(max-width:680px){.document-toolbar{gap:8px}.document-tabs button{padding:9px 16px}.zoom-controls{width:100%;justify-content:space-between}.document-pagination{padding:9px 12px}.dialog-label-links{left:auto;right:12px;bottom:12px;flex-direction:column;align-items:flex-end;gap:6px}.label-pill{font-size:.8125rem;padding:6px 12px}.label-pill .pill-long{display:none}.label-pill .pill-word{display:inline-block}.label-pill .pill-word::first-letter{text-transform:uppercase}}

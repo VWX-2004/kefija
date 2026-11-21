@@ -14,6 +14,8 @@ const orderContact = document.querySelector('#order-contact');
 const orderEmail = document.querySelector('#order-email');
 const orderRecipient = document.querySelector('#order-recipient');
 const orderPreview = document.querySelector('#order-preview');
+const orderTotal = document.querySelector('#order-total');
+const copyEmailButton = document.querySelector('#copy-email');
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('#mobile-menu');
 
@@ -39,6 +41,7 @@ function updateInquiry() {
   orderEmail.href = `mailto:${orderContact.value}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
   orderRecipient.textContent = orderContact.value;
   orderPreview.textContent = message;
+  orderTotal.innerHTML = `Total estimado: <strong>L ${(count * 69.99).toFixed(2)}</strong>`;
   messageField.value = message;
 }
 function updateQuantity(value) {
@@ -89,6 +92,16 @@ quantityInput.addEventListener('input', () => {
 orderContact.addEventListener('change', updateInquiry);
 orderEmail.addEventListener('click', () => updateQuantity(quantityInput.value));
 updateInquiry();
+copyEmailButton.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(orderContact.value);
+    feedback.textContent = `Correo copiado: ${orderContact.value}`;
+    copyEmailButton.textContent = '¡Copiado!';
+    setTimeout(() => { copyEmailButton.textContent = 'Copiar correo'; }, 2000);
+  } catch {
+    feedback.textContent = `Correo del contacto: ${orderContact.value}`;
+  }
+});
 copyButton.addEventListener('click', async () => {
   updateQuantity(quantityInput.value);
   const message = getMessage();
@@ -98,6 +111,8 @@ copyButton.addEventListener('click', async () => {
     await navigator.clipboard.writeText(message);
     fallback.hidden = true;
     feedback.textContent = `Mensaje copiado. Envíalo a ${orderContact.value}.`;
+    copyButton.textContent = '¡Mensaje copiado!';
+    setTimeout(() => { copyButton.textContent = 'Copiar mensaje'; }, 2200);
   } catch {
     fallback.hidden = false;
     messageField.value = message;
@@ -140,36 +155,42 @@ window.matchMedia('(min-width: 681px)').addEventListener('change', event => {
 document.querySelector('#year').textContent = String(new Date().getFullYear());
 
 const materials={
- frente:{title:'Etiqueta frontal',category:'Mango y miel · 330 ml',pages:['assets/kefija-etiqueta.webp']},
- reverso:{title:'Etiqueta posterior',category:'Información de la bebida',pages:['assets/materiales/etiqueta-1.webp'],note:'Información nutricional estimada. El registro, el lote y el vencimiento del diseño son ilustrativos.'}
+ frente:{title:'Etiqueta frontal',category:'Mango y miel · 330 ml',pages:['assets/kefija-etiqueta.webp'],fit:'page'},
+ reverso:{title:'Etiqueta posterior',category:'Información de la bebida',pages:['assets/materiales/etiqueta-1.webp'],fit:'width',note:'Información nutricional estimada. El registro, el lote y el vencimiento del diseño son ilustrativos.'}
 };
-const documentSelect = document.querySelector('#document-select');
 const documentImage = document.querySelector('#document-image');
 const documentCanvas = document.querySelector('#document-canvas');
 const previous = document.querySelector('#document-previous');
 const next = document.querySelector('#document-next');
-const zoom = document.querySelector('#document-zoom');
-let activeDocument = 'frente', activePage = 1, labelScale = 1;
+const zoomFit = document.querySelector('#document-zoom');
+const zoomIn = document.querySelector('#zoom-in');
+const zoomOut = document.querySelector('#zoom-out');
+const zoomLevel = document.querySelector('#zoom-level');
+const documentBack = document.querySelector('#document-back');
+const documentDownload = document.querySelector('#document-download');
+const tabs = document.querySelectorAll('[data-document-tab]');
+const MIN_SCALE = 1, MAX_SCALE = 3, STEP = 0.25;
+let activeDocument = 'frente', activePage = 1, labelScale = 1, cameFrom = null;
 
 function fitDocumentImage() {
   if (!documentDialog.open || !documentImage.naturalWidth || !documentImage.naturalHeight) return;
   const style = getComputedStyle(documentCanvas);
   const availableWidth = Math.max(1, documentCanvas.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight));
   const availableHeight = Math.max(1, documentCanvas.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom));
-  const fitScale = Math.min(availableWidth / documentImage.naturalWidth, availableHeight / documentImage.naturalHeight, 1);
-  documentImage.style.width = `${Math.floor(documentImage.naturalWidth * fitScale * labelScale)}px`;
+  const byWidth = Math.min(availableWidth, 760, documentImage.naturalWidth);
+  const byPage = Math.min(availableWidth / documentImage.naturalWidth, availableHeight / documentImage.naturalHeight, 1) * documentImage.naturalWidth;
+  const base = materials[activeDocument].fit === 'width' ? byWidth : byPage;
+  documentImage.style.width = `${Math.floor(base * labelScale)}px`;
   documentImage.style.height = 'auto';
 }
-function setLabelScale(scale) {
-  labelScale = scale;
-  const enlarged = scale > 1;
-  documentCanvas.classList.toggle('zoomed', enlarged);
-  zoom.setAttribute('aria-pressed', String(enlarged));
-  const label = enlarged ? 'Ajustar la etiqueta a la ventana' : 'Ampliar la etiqueta un 25 %';
-  zoom.setAttribute('aria-label', label);
-  zoom.title = label;
-  zoom.querySelector('span').textContent = enlarged ? 'Ajustar a la ventana' : 'Ampliar 25 %';
-  documentCanvas.scrollTop = documentCanvas.scrollLeft = 0;
+function setLabelScale(scale, reset = true) {
+  labelScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale));
+  documentCanvas.classList.toggle('zoomed', labelScale > 1);
+  zoomLevel.textContent = `${Math.round(labelScale * 100)} %`;
+  zoomOut.disabled = labelScale <= MIN_SCALE;
+  zoomIn.disabled = labelScale >= MAX_SCALE;
+  zoomFit.disabled = labelScale === 1;
+  if (reset) documentCanvas.scrollTop = documentCanvas.scrollLeft = 0;
   fitDocumentImage();
 }
 function renderDocumentPage() {
@@ -178,10 +199,14 @@ function renderDocumentPage() {
   documentImage.alt = `${material.title}, vista ${activePage} de ${material.pages.length}`;
   documentImage.hidden = false;
   document.querySelector('#document-error').hidden = true;
-  document.querySelector('#document-counter').textContent = `Vista ${activePage} de ${material.pages.length}`;
+  const counter = document.querySelector('#document-counter');
+  counter.textContent = `Vista ${activePage} de ${material.pages.length}`;
+  counter.hidden = material.pages.length === 1;
   previous.disabled = activePage === 1;
   next.disabled = activePage === material.pages.length;
   previous.hidden = next.hidden = material.pages.length === 1;
+  documentDownload.href = material.pages[activePage - 1];
+  documentDownload.setAttribute('download', `kefija-${activeDocument === 'frente' ? 'etiqueta-frontal' : 'etiqueta-posterior'}.webp`);
   setLabelScale(1);
 }
 function chooseDocument(key, page = 1) {
@@ -189,7 +214,7 @@ function chooseDocument(key, page = 1) {
   if (!material) return false;
   activeDocument = key;
   activePage = Math.min(material.pages.length, Math.max(1, Number(page) || 1));
-  documentSelect.value = key;
+  tabs.forEach(tab => tab.setAttribute('aria-pressed', String(tab.dataset.documentTab === key)));
   document.querySelector('#document-title').textContent = material.title;
   document.querySelector('#document-category').textContent = material.category;
   const note = document.querySelector('#document-note');
@@ -200,6 +225,8 @@ function chooseDocument(key, page = 1) {
 }
 window.openKefijaMaterial = (key, page = 1) => {
   if (!chooseDocument(key, page)) return;
+  cameFrom = orderDialog.open ? orderDialog : labelDialog.open ? labelDialog : null;
+  documentBack.hidden = !cameFrom;
   showDialog(documentDialog);
   requestAnimationFrame(fitDocumentImage);
 };
@@ -207,14 +234,28 @@ document.querySelectorAll('[data-open-document]').forEach(button => {
   button.addEventListener('click', () => window.openKefijaMaterial(button.dataset.openDocument, button.dataset.documentPage));
 });
 document.querySelector('#document-close').addEventListener('click', () => documentDialog.close());
-documentSelect.addEventListener('change', () => chooseDocument(documentSelect.value));
+documentBack.addEventListener('click', () => documentDialog.close());
+tabs.forEach(tab => tab.addEventListener('click', () => chooseDocument(tab.dataset.documentTab)));
 previous.addEventListener('click', () => {
   if (activePage > 1) { activePage--; renderDocumentPage(); }
 });
 next.addEventListener('click', () => {
   if (activePage < materials[activeDocument].pages.length) { activePage++; renderDocumentPage(); }
 });
-zoom.addEventListener('click', () => setLabelScale(labelScale === 1 ? 1.25 : 1));
+zoomIn.addEventListener('click', () => setLabelScale(labelScale + STEP, false));
+zoomOut.addEventListener('click', () => setLabelScale(labelScale - STEP, false));
+zoomFit.addEventListener('click', () => setLabelScale(1));
+documentImage.addEventListener('dblclick', () => setLabelScale(labelScale > 1 ? 1 : 2));
+documentCanvas.addEventListener('wheel', event => {
+  if (!event.ctrlKey) return;
+  event.preventDefault();
+  setLabelScale(labelScale + (event.deltaY < 0 ? STEP : -STEP), false);
+}, { passive: false });
+documentCanvas.addEventListener('keydown', event => {
+  if (event.key === '+' || event.key === '=') setLabelScale(labelScale + STEP, false);
+  else if (event.key === '-') setLabelScale(labelScale - STEP, false);
+  else if (event.key === '0') setLabelScale(1);
+});
 documentImage.addEventListener('load', fitDocumentImage);
 documentImage.addEventListener('error', () => {
   documentImage.hidden = true;

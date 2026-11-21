@@ -27,9 +27,9 @@
   <link rel="preload" href="assets/kefija-botella-640.webp" as="image" type="image/webp" imagesrcset="assets/kefija-botella-640.webp 640w, assets/kefija-botella.webp 1254w" imagesizes="(max-width:680px) 100vw, 640px" fetchpriority="high">
   <link rel="preload" href="assets/kefija-sans.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preload" href="assets/kefija-sans-semibold.woff2" as="font" type="font/woff2" crossorigin="">
-  <link rel="stylesheet" href="styles.e73af1.css">
+  <link rel="stylesheet" href="styles.cb33be.css">
   <script>document.documentElement.classList.add("js-reveal")</script>
-  <script src="app.73fde133.js" defer=""></script>
+  <script src="app.656779.js" defer=""></script>
   <script src="bottle-viewer.2dc7658b.js" defer=""></script>
 </head>
 <body>
@@ -244,7 +244,7 @@
 
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-title">
     <div class="dialog-layout">
-      <div class="dialog-product"><span class="dialog-product-label">MANGO + MIEL · 330 ML</span><img src="assets/kefija-botella-640.webp" alt="Botella de Kéfija de 330 ml" width="1254" height="1254"><button class="text-link label-magnifier" data-open-document="frente" aria-label="Ampliar etiqueta frontal" title="Ampliar etiqueta frontal"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="magnifier-tip" aria-hidden="true">Ampliar etiqueta</span></button></div>
+      <div class="dialog-product"><span class="dialog-product-label">MANGO + MIEL · 330 ML</span><img src="assets/kefija-botella-640.webp" alt="Botella de Kéfija de 330 ml" width="1254" height="1254"><div class="dialog-label-links" role="group" aria-label="Ver etiquetas del producto"><button type="button" class="label-pill" data-open-document="frente"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="pill-long">Etiqueta </span><span class="pill-word">frontal</span></button><button type="button" class="label-pill" data-open-document="reverso"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="pill-long">Etiqueta </span><span class="pill-word">posterior</span></button></div></div>
       <div class="dialog-content">
         <button class="close-button" data-close-order="" aria-label="Cerrar consulta">×</button>
         <p class="eyebrow">Solicitud de información</p><h2 id="order-title">Consulta sobre <em>Kéfija.</em></h2>
@@ -252,6 +252,7 @@
         <p class="product-price dialog-price"><strong>L 69.99</strong><span>por botella · 330 ml</span></p>
         <label class="quantity-label" for="quantity">Cantidad de botellas</label>
         <div class="quantity-control"><button id="quantity-minus" aria-label="Quitar una botella" disabled="">−</button><input id="quantity" type="number" min="1" max="99" value="1" inputmode="numeric"><button id="quantity-plus" aria-label="Agregar una botella">+</button></div>
+        <p class="order-total" id="order-total" aria-live="polite">Total estimado: <strong>L 69.99</strong></p>
         <label class="order-contact-label" for="order-contact">Contacto del equipo</label>
         <select class="order-contact-select" id="order-contact">
                   <option value="hamilton.godoy@est.zamorano.edu">Hamilton Godoy</option>
@@ -263,15 +264,15 @@
                   <option value="nicholas.garcia@est.zamorano.edu">Nicholas García</option>
                   <option value="jose.guillermo@est.zamorano.edu">José Guillermo</option>
         </select>
-        <p class="order-recipient" id="order-recipient">hamilton.godoy@est.zamorano.edu</p>
+        <div class="order-recipient-row"><p class="order-recipient" id="order-recipient">hamilton.godoy@est.zamorano.edu</p><button type="button" class="order-copy-email" id="copy-email">Copiar correo</button></div>
         <a class="button button-dark order-email-button" id="order-email" href="mailto:hamilton.godoy@est.zamorano.edu?subject=Consulta%20de%20disponibilidad%20%C2%B7%20K%C3%A9fija%20%C2%B7%201%20botella&amp;body=Hola%2C%20equipo%20K%C3%A9fija%3A%0A%0AMe%20gustar%C3%ADa%20consultar%20la%20disponibilidad%20de%201%20botella%20de%20k%C3%A9fir%20de%20mango%20y%20miel%20de%20abeja%2C%20en%20presentaci%C3%B3n%20de%20330%20ml%2C%20con%20un%20precio%20unitario%20de%20L%2069.99.%20%C2%BFPodr%C3%ADan%20indicarme%20las%20opciones%20de%20entrega%3F%0A%0AMuchas%20gracias." aria-describedby="order-email-help">Abrir consulta por correo</a>
-        <p class="order-email-help" id="order-email-help">Se abrirá tu aplicación de correo con el destinatario, la cantidad y el mensaje preparados. Revisa y envía la consulta. Este mensaje no confirma pedidos ni disponibilidad.</p>
+        <p class="order-email-help" id="order-email-help">Se abrirá tu correo con el mensaje listo. Este mensaje no confirma pedidos ni disponibilidad. ¿No se abre? Copia el mensaje y envíalo tú.</p>
         <details class="order-message-preview"><summary>Vista previa del mensaje</summary><p id="order-preview">Hola, equipo Kéfija:
 
 Me gustaría consultar la disponibilidad de 1 botella de kéfir de mango y miel de abeja (330 ml, L 69.99). ¿Podrían indicarme las opciones de entrega?
 
 Muchas gracias.</p></details>
-        <button class="order-copy-button" id="copy-order">Copiar mensaje</button>
+        <button type="button" class="order-copy-button" id="copy-order">Copiar mensaje</button>
         <div id="copy-fallback" hidden=""><label for="order-message">Selecciona y copia el mensaje:</label><textarea id="order-message" rows="5" readonly=""></textarea></div>
         <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
       </div>
@@ -281,11 +282,11 @@ Muchas gracias.</p></details>
   <dialog class="bottle-dialog" id="label-dialog" aria-labelledby="label-title"><div class="bottle-dialog-header"><div><p class="material-meta">PRESENTACIÓN DEL PRODUCTO</p><h2 id="label-title">Vista frontal y posterior.</h2></div><button class="document-close" data-close-label="" aria-label="Cerrar botella">×</button></div><div data-bottle-viewer=""></div></dialog>
 
   <dialog class="document-dialog" id="document-dialog" aria-labelledby="document-title">
-    <header class="document-header"><div><p class="material-meta" id="document-category">ETIQUETAS KÉFIJA</p><h2 id="document-title">Etiqueta frontal</h2></div><button class="document-close" id="document-close" aria-label="Cerrar documento">×</button></header>
-    <div class="document-toolbar"><label class="document-select-label" for="document-select">Contenido<select id="document-select"><option value="frente">Etiqueta frontal</option><option value="reverso">Etiqueta posterior</option></select></label></div>
+    <header class="document-header"><div class="document-heading"><button type="button" class="document-back" id="document-back" hidden>← Volver a la consulta</button><p class="material-meta" id="document-category">ETIQUETAS KÉFIJA</p><h2 id="document-title">Etiqueta frontal</h2></div><button class="document-close" id="document-close" aria-label="Cerrar etiqueta">×</button></header>
+    <div class="document-toolbar"><div class="document-tabs" role="group" aria-label="Elegir etiqueta"><button type="button" data-document-tab="frente" aria-pressed="true">Frontal</button><button type="button" data-document-tab="reverso" aria-pressed="false">Posterior</button></div><a class="document-download" id="document-download" href="assets/kefija-etiqueta.webp" download>Descargar imagen</a></div>
     <p class="document-note" id="document-note" hidden=""></p>
-    <div class="document-pagination"><button id="document-previous" disabled="" hidden="">Anterior</button><span id="document-counter" role="status" aria-live="polite">Vista 1 de 1</span><button id="document-next" disabled="" hidden="">Siguiente</button><button id="document-zoom" aria-pressed="false" aria-label="Ampliar la etiqueta un 25 %" title="Ampliar la etiqueta un 25 %"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span>Ampliar 25 %</span></button></div>
-    <div class="document-canvas" id="document-canvas" tabindex="0" aria-label="Vista del documento"><img id="document-image" alt="" decoding="async"><p id="document-error" role="status" hidden="">No fue posible cargar la imagen. Intenta abrirla nuevamente.</p></div>
+    <div class="document-pagination"><button id="document-previous" disabled="" hidden="">Anterior</button><span id="document-counter" role="status" aria-live="polite" hidden>Vista 1 de 1</span><button id="document-next" disabled="" hidden="">Siguiente</button><div class="zoom-controls" role="group" aria-label="Zoom"><button type="button" id="zoom-out" aria-label="Reducir">−</button><output id="zoom-level" aria-live="polite">100 %</output><button type="button" id="zoom-in" aria-label="Acercar">+</button><button type="button" id="document-zoom" aria-label="Ajustar a la ventana">Ajustar</button></div></div>
+    <div class="document-canvas" id="document-canvas" tabindex="0" aria-label="Vista de la etiqueta. Doble clic o Ctrl y rueda para acercar."><img id="document-image" alt="" decoding="async"><p id="document-error" role="status" hidden="">No fue posible cargar la imagen. Intenta abrirla nuevamente.</p></div>
   </dialog>
 
 
