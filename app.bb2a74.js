@@ -32,7 +32,7 @@ function normalizeQuantity(value) {
 }
 function getMessage() {
   const count = normalizeQuantity(quantityInput.value);
-  return `Hola, equipo Kéfija:\n\nMe gustaría consultar la disponibilidad de ${count} ${count === 1 ? 'botella' : 'botellas'} de kéfir de mango y miel de abeja (330 ml, L 69.99). ¿Podrían indicarme las opciones de entrega?\n\nMuchas gracias.`;
+  return `Hola, equipo Kéfija:\n\nMe gustaría consultar la disponibilidad de ${count} ${count === 1 ? 'botella' : 'botellas'} de kéfir de mango y miel de abeja (330 ml, L 80.00). ¿Podrían indicarme las opciones de entrega?\n\nMuchas gracias.`;
 }
 function updateInquiry() {
   const count = normalizeQuantity(quantityInput.value);
@@ -41,7 +41,7 @@ function updateInquiry() {
   orderEmail.href = `mailto:${orderContact.value}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
   orderRecipient.textContent = orderContact.value;
   orderPreview.textContent = message;
-  orderTotal.innerHTML = `Total estimado: <strong>L ${(count * 69.99).toFixed(2)}</strong>`;
+  orderTotal.innerHTML = `Total estimado: <strong>L ${(count * 80.00).toFixed(2)}</strong>`;
   messageField.value = message;
 }
 function updateQuantity(value) {
